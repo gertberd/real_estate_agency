@@ -11,4 +11,12 @@ class FlatAdmin(admin.ModelAdmin):
     list_filter = ("new_building", "rooms_number", "has_balcony", "active")
 
 
+class ClaimAdmin(admin.ModelAdmin):
+    raw_id_fields = ("author", "flat")
+    search_fields = ("flat__address", "text", "author__last_name", "author__first_name")
+    list_display = ("flat", "text", "author")
+    list_filter = ("author",)
+
+
 admin.site.register(Flat, FlatAdmin)
+admin.site.register(Claim, ClaimAdmin)
