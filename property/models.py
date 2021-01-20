@@ -37,7 +37,7 @@ class Flat(models.Model):
     construction_year = models.IntegerField(
         "Год постройки здания", null=True, blank=True, db_index=True
     )
-    new_building = models.NullBooleanField("Новостройка")
+    new_building = models.NullBooleanField("Новостройка", db_index=True)
     liked_by = models.ManyToManyField(
         User, blank=True, verbose_name="Кто лайкнул", related_name="liked_flats"
     )
